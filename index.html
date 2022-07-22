@@ -35,10 +35,10 @@
                             <div class="my-carousel-images">
                                 
                                 <div class="my-carousel-item active">
-                                    <img class="img-fluid" src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg" alt="Svezia">
+                                    <img class="img-fluid" :src="images[currentSlide].url" alt="">
                                     <div class="item-description px-3">
-                                        <h2>Svezia</h2>
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.</p>
+                                        <h2>{{images[currentSlide].title}}</h2>
+                                        <p>{{images[currentSlide].description}}</p>
                                     </div>
                                 </div>
     
@@ -46,17 +46,17 @@
                             </div>
                             <div class="my-thumbnails position-relative">
     
-                                <div class="my-thumbnail active">
-                                    <img class="img-fluid" src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg" alt="Thumbnail of Svezia picture">
+                                <div v-for="(image, indice) in images" :class="(currentSlide == indice)?'active' : ''"  class="my-thumbnail active">
+                                    <img class="img-fluid" :src="image.url" alt="Thumbnail of Svezia picture">
                                 </div>
                                
                                 <!-- prev -->
-                                <div class="my-previous position-absolute">
+                                <div class="my-previous position-absolute" @click="prev">
                                     <span class="my-prev-hook"></span>
                                 </div>
                                 <!-- immagini interne -->
                                 <!-- next -->
-                                <div class="my-next position-absolute">
+                                <div class="my-next position-absolute" @click="next">
                                     <span class="my-next-hook"></span>
                                 </div>
                             </div>
@@ -68,6 +68,7 @@
         </div>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
